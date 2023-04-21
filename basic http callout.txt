@@ -1,0 +1,18 @@
+public class callout_Integration {
+    public static void callout(){
+       
+        HttpRequest req = new HttpRequest();
+        HttpResponse res = new HttpResponse();
+        Http http = new Http();
+        
+        req.setEndpoint('https://postman-echo.com/get?foo1=bar1&foo2=bar2');
+        req.setMethod('GET');
+        try {
+            res = http.send(req);
+            system.debug('>>>>>>>>'+res.getBody());
+        }catch(system.calloutException e){
+            
+        }
+            
+        }
+    }

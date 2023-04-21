@@ -1,0 +1,15 @@
+import { LightningElement, wire } from 'lwc';
+import getRecentAccounts from '@salesforce/apex/RecentlyCreatedAccountsController.getRecentAccounts';
+
+export default class RecentlyCreatedAccounts extends LightningElement {
+    accounts = [];
+
+    @wire(getRecentAccounts)
+    wiredRecentAccounts({ error, data }) {
+        if (data) {
+            this.accounts = data;
+        } else if (error) {
+            console.log(error);
+        }
+    }
+}

@@ -1,0 +1,6 @@
+public with sharing class RecentlyCreatedAccountsController {
+    @AuraEnabled(cacheable=true)
+    public static List<Account> getRecentAccounts() {
+        return [SELECT Name, CreatedDate__c FROM Account ORDER BY CreatedDate__c DESC LIMIT 10];
+    }
+    }
